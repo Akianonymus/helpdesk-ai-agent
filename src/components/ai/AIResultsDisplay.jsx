@@ -196,7 +196,7 @@ const AIResultsDisplay = ({ ticketId, ticket }) => {
                 clipRule="evenodd"
               />
             </svg>
-            Suggested Reply
+            Reply
           </h4>
           <div className="bg-green-50 rounded-lg p-4 border border-green-100">
             <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-wrap">

@@ -123,7 +123,9 @@ export const TicketsProvider = ({ children }) => {
 
       // Update in tickets list
       setTickets((prev) =>
-        prev.map((ticket) => (ticket._id === ticketId ? updatedTicket : ticket))
+        prev.map((ticket) =>
+          ticket._id === ticketId ? updatedTicket : ticket,
+        ),
       );
 
       // Update current ticket if it's the one being viewed

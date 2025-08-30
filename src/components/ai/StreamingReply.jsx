@@ -81,7 +81,7 @@ const StreamingReply = ({ ticketId }) => {
             </div>
             <span className="text-xs text-gray-500">
               {Math.round(
-                (displayText.length / Math.max(streamingText.length, 1)) * 100
+                (displayText.length / Math.max(streamingText.length, 1)) * 100,
               )}
               %
             </span>

@@ -41,26 +41,8 @@ const TicketDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-6">
-          <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-            <Link to="/" className="hover:text-gray-700">
-              Dashboard
-            </Link>
-            <span>/</span>
-            <Link to="/tickets" className="hover:text-gray-700">
-              Tickets
-            </Link>
-            <span>/</span>
-            <span className="text-gray-900">
-              {currentTicket ? currentTicket.title : "Loading..."}
-            </span>
-          </nav>
-        </div>
-
-        <TicketDetail ticket={currentTicket} />
-      </div>
+    <div className="min-h-screen w-full bg-gray-50 py-8 px-6 max-w-7xl mx-auto">
+      <TicketDetail ticket={currentTicket} />
     </div>
   );
 };

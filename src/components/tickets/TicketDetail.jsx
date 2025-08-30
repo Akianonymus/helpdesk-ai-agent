@@ -262,7 +262,7 @@ const TicketDetail = ({ ticket }) => {
                           )}
                         </div>
                       </div>
-                    )
+                    ),
                   )}
                   {ticketAIProcessing.overallStatus && (
                     <div className="pt-3 border-t border-blue-200">
@@ -333,51 +333,54 @@ const TicketDetail = ({ ticket }) => {
             </div>
 
             {/* Status Update (Admin) */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
-                Update Status
-              </h3>
-              <div className="space-y-3">
-                <div>
-                  <label
-                    htmlFor="status"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Status
-                  </label>
-                  <select
-                    id="status"
-                    value={updateData.status}
-                    onChange={(e) =>
-                      setUpdateData((prev) => ({
-                        ...prev,
-                        status: e.target.value,
-                      }))
+            {ticket.status !== TICKET_STATUS.CLOSED && (
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Update Status
+                </h3>
+                <div className="space-y-3">
+                  <div>
+                    <label
+                      htmlFor="status"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Status
+                    </label>
+                    <select
+                      disabled={ticket.status === TICKET_STATUS.CLOSED}
+                      id="status"
+                      value={updateData.status}
+                      onChange={(e) =>
+                        setUpdateData((prev) => ({
+                          ...prev,
+                          status: e.target.value,
+                        }))
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    >
+                      <option value="">Select status</option>
+                      <option value={TICKET_STATUS.OPEN}>Open</option>
+                      <option value={TICKET_STATUS.IN_PROGRESS}>
+                        In Progress
+                      </option>
+                      <option value={TICKET_STATUS.RESOLVED}>Resolved</option>
+                      <option value={TICKET_STATUS.CLOSED}>Closed</option>
+                    </select>
+                  </div>
+                  <button
+                    onClick={handleStatusUpdate}
+                    disabled={
+                      !updateData.status ||
+                      updateData.status === ticket.status ||
+                      isUpdating
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    className="w-full px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <option value="">Select status</option>
-                    <option value={TICKET_STATUS.OPEN}>Open</option>
-                    <option value={TICKET_STATUS.IN_PROGRESS}>
-                      In Progress
-                    </option>
-                    <option value={TICKET_STATUS.RESOLVED}>Resolved</option>
-                    <option value={TICKET_STATUS.CLOSED}>Closed</option>
-                  </select>
+                    {isUpdating ? "Updating..." : "Update Status"}
+                  </button>
                 </div>
-                <button
-                  onClick={handleStatusUpdate}
-                  disabled={
-                    !updateData.status ||
-                    updateData.status === ticket.status ||
-                    isUpdating
-                  }
-                  className="w-full px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isUpdating ? "Updating..." : "Update Status"}
-                </button>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

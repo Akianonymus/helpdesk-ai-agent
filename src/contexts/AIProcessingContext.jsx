@@ -14,7 +14,7 @@ export const useAIProcessing = () => {
   const context = useContext(AIProcessingContext);
   if (!context) {
     throw new Error(
-      "useAIProcessing must be used within an AIProcessingProvider"
+      "useAIProcessing must be used within an AIProcessingProvider",
     );
   }
   return context;
@@ -96,7 +96,7 @@ export const AIProcessingProvider = ({ children }) => {
 
           // Check if all agents are completed
           const allCompleted = Object.values(ticket.agents).every(
-            (agent) => agent.status === "completed"
+            (agent) => agent.status === "completed",
           );
 
           if (allCompleted) {
@@ -220,14 +220,14 @@ export const AIProcessingProvider = ({ children }) => {
     (ticketId) => {
       return aiProcessingTickets.get(ticketId) || null;
     },
-    [aiProcessingTickets]
+    [aiProcessingTickets],
   );
 
   const getStreamingReply = useCallback(
     (ticketId) => {
       return streamingReplies.get(ticketId) || "";
     },
-    [streamingReplies]
+    [streamingReplies],
   );
 
   const clearStreamingReply = useCallback((ticketId) => {
@@ -254,7 +254,7 @@ export const AIProcessingProvider = ({ children }) => {
         throw new Error("Socket not connected");
       }
     },
-    [socketConnected]
+    [socketConnected],
   );
 
   // Function to leave a specific ticket room

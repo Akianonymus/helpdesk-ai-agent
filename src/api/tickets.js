@@ -34,7 +34,7 @@ export const ticketsAPI = {
     if (filterOptions.page) params.append("page", filterOptions.page);
 
     const response = await apiClient.get(
-      `/tickets/filter/ai-status?${params.toString()}`
+      `/tickets/filter/ai-status?${params.toString()}`,
     );
     return response.data;
   },
