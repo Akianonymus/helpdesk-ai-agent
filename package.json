@@ -1,7 +1,7 @@
 {
-  "name": "mern-helpdesk-backend",
+  "name": "helpdesk-ai-backend",
   "version": "1.0.0",
-  "description": "Backend for MERN stack helpdesk app with AI integration",
+  "description": "Backend for helpdesk app with AI integration",
   "main": "server.js",
   "type": "module",
   "scripts": {
