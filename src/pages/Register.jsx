@@ -44,7 +44,7 @@ const Register = () => {
         password: passwordRef.current.value,
       };
       await register(userData);
-      window.location.reload();
+      window.location.href = "/";
     } catch (err) {
       console.error("Registration error:", err);
     } finally {
