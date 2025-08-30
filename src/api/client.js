@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
+  baseURL:
+    import.meta.env.VITE_API_URL ||
+    "https://helpdesk-ai-agent-1003388358529.asia-south1.run.app" ||
+    "http://localhost:3000",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
@@ -18,7 +21,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  },
+  }
 );
 
 apiClient.interceptors.response.use(
@@ -33,7 +36,7 @@ apiClient.interceptors.response.use(
       }
     }
     return Promise.reject(error);
-  },
+  }
 );
 
 export default apiClient;
